@@ -199,6 +199,29 @@
 					</dependency>
 				</dependencies>
 			</plugin>
+		    <plugin>
+		      <groupId>com.iluwatar.urm</groupId>
+		      <artifactId>urm-maven-plugin</artifactId>
+		      <version>1.4.8</version>
+		      <configuration>
+		        <!-- if outputDirectory is not set explicitly it will default to your build dir -->
+		        <outputDirectory>${project.basedir}/target/diagrams</outputDirectory>
+		        <packages>
+					<param>gov.nist.secauto.metaschema.model.common</param>>
+		        </packages>
+		        <includeMainDirectory>true</includeMainDirectory>
+		        <includeTestDirectory>false</includeTestDirectory>
+		        <presenter>mermaid</presenter>
+		      </configuration>
+		      <executions>
+		        <execution>
+		          <phase>process-classes</phase>
+		          <goals>
+		            <goal>map</goal>
+		          </goals>
+		        </execution>
+		      </executions>
+		    </plugin>
 			<!-- <plugin> <groupId>com.khubla.antlr</groupId> <artifactId>antlr4test-maven-plugin</artifactId> 
 				<configuration> <verbose>false</verbose> <showTree>false</showTree> <entryPoint>auxilary</entryPoint> 
 				<grammarName>metapath10</grammarName> <packageName /> <exampleFiles>examples/</exampleFiles> 
