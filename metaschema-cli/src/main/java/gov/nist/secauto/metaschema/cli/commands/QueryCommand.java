@@ -176,7 +176,7 @@ public class QueryCommand
 
     // executing the query against the content
     ISequence<?> sequence = MetapathExpression.compile(metpath).evaluate(contentObject);
-    System.out.println(sequence);
+    LOGGER.info(sequence);
 
     return ExitCode.OK.exit();
   }
