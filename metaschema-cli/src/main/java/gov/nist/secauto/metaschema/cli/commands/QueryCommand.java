@@ -70,7 +70,7 @@ public class QueryCommand
       Option.builder("i")
           .hasArg()
           .argName("FILE")
-          .required()
+          //.required()
           .desc("metaschema content instance resource")
           .build());
   @NonNull

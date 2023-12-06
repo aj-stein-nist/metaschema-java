@@ -85,6 +85,7 @@ public class CLITest {
 		values.add(Arguments.of(new String[] { "generate-schema", "--overwrite", "--as", "JSON",
 				"../databind/src/test/resources/metaschema/fields_with_flags/metaschema.xml",
 				"target/schema-test.json" }, ExitCode.OK, noExpectedExceptionClass));
+		values.add(Arguments.of(new String[] { "query", "-m", "module.xml", "-i", "content-instance.xml", "\"2 + 2\""}, ExitCode.INVALID_COMMAND, noExpectedExceptionClass));
 		return values.stream();
 	}
 
