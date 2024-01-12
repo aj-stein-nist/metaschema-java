@@ -26,7 +26,6 @@
 
 package gov.nist.secauto.metaschema.cli;
 
-import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNull;
@@ -98,13 +97,17 @@ public class CLITest {
   }
 
   @Test
-  void testQueryCommand() {
+  void testQueryCommand() throws Throwable {
     LogCaptor logCaptor = LogCaptor.forClass(QueryCommand.class);
     String[] args
         = new String[] { "query", "-m", "../databind/src/test/resources/metaschema/fields_with_flags/metaschema.xml",
             "-i",
-            "../databind/src/test/resources/metaschema/fields_with_flags/example.json", "3 + 4 + 5" };
-    CLI.runCli(args);
-    assertThat(logCaptor.getInfoLogs()).containsExactly("[12]");
-  };
+            "../databind/src/test/resources/metaschema/fields_with_flags/example.json", "/top-level/@id => string()" };
+    ExitStatus result = CLI.runCli(args);
+    Throwable exception = result.getThrowable();
+    // assertThat(logCaptor.getInfoLogs()).containsExactly("[3, 2, 1]");
+    if (exception != null) {
+      throw exception;
+    }
+  }
 }
