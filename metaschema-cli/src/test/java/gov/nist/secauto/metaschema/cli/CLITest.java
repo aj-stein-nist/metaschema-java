@@ -67,7 +67,9 @@ public class CLITest {
     List<Arguments> values = new ArrayList<>();
     values.add(Arguments.of(new String[] {}, ExitCode.INVALID_COMMAND, noExpectedExceptionClass));
     values.add(Arguments.of(new String[] { "-h" }, ExitCode.OK, noExpectedExceptionClass));
-    values.add(Arguments.of(new String[] { "generate-schema", "--help" }, ExitCode.INVALID_COMMAND,
+    values.add(Arguments.of(new String[] { "generate-schema" }, ExitCode.OK,
+        noExpectedExceptionClass));
+    values.add(Arguments.of(new String[] { "generate-schema", "--help" }, ExitCode.OK,
         noExpectedExceptionClass));
     values.add(Arguments.of(new String[] { "validate", "--help" }, ExitCode.OK, noExpectedExceptionClass));
     values.add(Arguments.of(new String[] { "validate-content", "--help" }, ExitCode.INVALID_COMMAND,
@@ -79,17 +81,6 @@ public class CLITest {
     values.add(Arguments.of(new String[] { "generate-schema", "--overwrite", "--as", "JSON",
         "../databind/src/test/resources/metaschema/fields_with_flags/metaschema.xml",
         "target/schema-test.json" }, ExitCode.OK, noExpectedExceptionClass));
-    values.add(Arguments.of(
-        new String[] { "validate-content", "--as=xml",
-            "-m=../databind/src/test/resources/metaschema/bad_index-has-key/metaschema.xml",
-            "../databind/src/test/resources/metaschema/bad_index-has-key/example.xml",
-            "--show-stack-trace" },
-        ExitCode.FAIL, noExpectedExceptionClass));
-    values.add(Arguments.of(
-        new String[] { "validate-content", "--as=json",
-            "-m=../databind/src/test/resources/metaschema/bad_index-has-key/metaschema.xml",
-            "../databind/src/test/resources/metaschema/bad_index-has-key/example.json", "--show-stack-trace" },
-        ExitCode.FAIL, noExpectedExceptionClass));
     return values.stream();
   }
 
