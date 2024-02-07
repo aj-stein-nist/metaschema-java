@@ -89,6 +89,12 @@ public class CLITest {
                 "--show-stack-trace" },
             ExitCode.FAIL, NO_EXCEPTION_CLASS));
         add(Arguments.of(
+            new String[] { "validate-content", "--as=xml",
+                "-m=../databind/src/test/resources/metaschema/bad_index-has-key/metaschema.xml",
+                "../databind/src/test/resources/metaschema/bad_index-has-key/example.xml",
+                "--show-stack-trace" },
+            ExitCode.FAIL, NO_EXCEPTION_CLASS));
+        add(Arguments.of(
             new String[] { "validate-content", "--as=json",
                 "-m=../databind/src/test/resources/metaschema/bad_index-has-key/metaschema.xml",
                 "../databind/src/test/resources/metaschema/bad_index-has-key/example.json", "--show-stack-trace" },
@@ -142,6 +148,14 @@ public class CLITest {
                 "--as=xml"
             },
             ExitCode.IO_ERROR, java.io.FileNotFoundException.class));
+        add(Arguments.of(new String[] { "validate-content", "-m",
+            "../databind/src/test/resources/metaschema/308-choice-regression/metaschema.xml",
+            "../databind/src/test/resources/metaschema/308-choice-regression/example.xml", }, ExitCode.FAIL,
+            NO_EXCEPTION_CLASS));
+        add(Arguments.of(new String[] { "validate-content", "-m",
+            "../databind/src/test/resources/metaschema/308-choice-regression/metaschema.xml",
+            "../databind/src/test/resources/metaschema/308-choice-regression/example.json", }, ExitCode.FAIL,
+            NO_EXCEPTION_CLASS));
       }
     };
 
