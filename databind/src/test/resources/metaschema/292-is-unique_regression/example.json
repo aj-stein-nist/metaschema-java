@@ -1,0 +1,15 @@
+{
+    "$schema": "experiment-model_json-schema.json",
+    "top": {
+        "middle": [
+            {
+                "id": 1,
+                "name": "Middle 1"
+            },
+            {
+                "id": 1,
+                "name": "Middle 1"
+            }
+        ]
+    }
+}

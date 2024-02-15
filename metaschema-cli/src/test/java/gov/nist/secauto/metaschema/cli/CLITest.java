@@ -93,6 +93,16 @@ public class CLITest {
                 "-m=../databind/src/test/resources/metaschema/bad_index-has-key/metaschema.xml",
                 "../databind/src/test/resources/metaschema/bad_index-has-key/example.json", "--show-stack-trace" },
             ExitCode.FAIL, NO_EXCEPTION_CLASS));
+        add(Arguments.of(new String[] { "validate-content", "--as=json",
+            "-m=../databind/src/test/resources/metaschema/292-is-unique_regression/metaschema.xml",
+            "../databind/src/test/resources/metaschema/292-is-unique_regression/example.json"
+        }, ExitCode.FAIL,
+            NO_EXCEPTION_CLASS));
+        add(Arguments.of(new String[] { "validate-content", "--as=json",
+            "-m=../databind/src/test/resources/metaschema/292-index_regression/metaschema.xml",
+            "../databind/src/test/resources/metaschema/292-index_regression/example.json"
+        }, ExitCode.FAIL,
+            NO_EXCEPTION_CLASS));            
         add(Arguments.of(
             new String[] { "validate",
                 "https://raw.githubusercontent.com/usnistgov/metaschema-java/28468999d802e69273df7e725d183c132e2b15d8/databind/src/test/resources/metaschema/simple/metaschema.xml",

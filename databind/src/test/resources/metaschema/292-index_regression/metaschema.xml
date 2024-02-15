@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="https://raw.githubusercontent.com/usnistgov/metaschema/develop/schema/xml/metaschema.xsd" type="application/xml" schematypens="http://www.w3.org/2001/XMLSchema"?>
+<METASCHEMA xmlns="http://csrc.nist.gov/ns/oscal/metaschema/1.0">
+    <schema-name>Example Metaschema</schema-name>
+    <schema-version>0.4.0</schema-version>
+    <short-name>example</short-name>
+    <namespace>https://github.com/usnistgov/metaschema-java/issues/292</namespace>
+    <json-base-uri>https://github.com/usnistgov/metaschema-java/issues/292</json-base-uri>
+    <define-assembly name="middle"> 
+        <model>
+            <define-field name="id" as-type="nonNegativeInteger"/>
+            <define-field name="name" as-type="string"/>
+        </model>
+    </define-assembly>    
+    <define-assembly name="top">
+        <root-name>top</root-name>
+        <model>
+            <assembly ref="middle" min-occurs="1" max-occurs="unbounded">
+                <group-as name="middle" in-json="ARRAY" />
+            </assembly>
+        </model>
+        <constraint>
+            <index target=".//middle" name="middle-index">
+                <description>An index of all middle parts</description>
+                <key-field target="@id"/>
+                <key-field target="@name"/>
+            </index>
+        </constraint>
+    </define-assembly>
+</METASCHEMA>
